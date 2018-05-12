@@ -1,7 +1,7 @@
 angular.module('video-player')
 
   .component('app', {
-    controller: function() {
+    controller: function(youTube) {
       this.videos = window.exampleVideoData;
       this.currentVideo = this.videos[0];
       
@@ -9,9 +9,20 @@ angular.module('video-player')
         this.currentVideo = video;
       };
       
-      this.searchResults = function(data) {
-        
+      this.searchResults = (message) => {
+        youTube.search({
+          query: message
+        },
+        (data) => {
+          this.videos = data.data.items;
+          this.currentVideo = data.data.items[0];
+        });
       };
+      // youTube.search({
+      //   query:'dogs',
+      //   max: 5,
+      //   key: window.YOUTUBE_API_KEY
+      // });
     },
     templateUrl: 'src/templates/app.html'
   });
