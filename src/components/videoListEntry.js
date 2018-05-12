@@ -2,7 +2,8 @@ angular.module('video-player')
   .component('videoListEntry', {
     
     bindings: {
-      singleVideo: '<'
+      video: '<',
+      selectVideo: '<'
     },
-    templateUrl: './src/templates/videoListEntry.html'
+    templateUrl: 'src/templates/videoListEntry.html'
   });
