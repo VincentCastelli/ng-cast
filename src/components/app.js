@@ -2,8 +2,19 @@ angular.module('video-player')
 
   .component('app', {
     controller: function(youTube) {
-      this.videos = window.exampleVideoData;
-      this.currentVideo = this.videos[0];
+      this.videos = [];//window.exampleVideoData;
+      this.currentVideo = {};//this.videos[0];
+      this.$onInit = function() {
+        youTube.search({
+          query: 'dogs'
+        },
+        (data) => {
+          this.videos = data.data.items;
+          this.currentVideo = data.data.items[0];
+        });
+      };
+        
+      
       
       this.onClick = (video) => {
         this.currentVideo = video;

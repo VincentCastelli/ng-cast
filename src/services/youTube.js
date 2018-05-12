@@ -2,7 +2,7 @@ angular.module('video-player')
   .service('youTube', function($http) {
 
     this.search = function(enteredData, cb) {
-      console.log(enteredData);
+      //console.log(enteredData);
 
       $http.get('https://www.googleapis.com/youtube/v3/search', {
         params: {
